@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div>
+            Sign up right here.
+        </div>
+        {% if message %}<p>{{message}}</p>{% endif %}
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            User Name <input type= "text" name="name"><br>
+            Password <input type ="password" name="password"><br>
+            Email Address<input type= "text" name="email_address"><br>
+            <input type="submit">
+        </form>
+    </body>
+</html>

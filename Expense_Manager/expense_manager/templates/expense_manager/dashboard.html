@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static "expense_manager/css/dashboard.css" %}">
+    </head>
+    <body>
+        <div>
+            Hello, <span id="username">{{ user.username }}</span>how are you doing today?
+        </div>
+        <div>
+            Your email is <span>{{user.email}}</span>
+        </div>
+        <div>
+            Your recent expenses.
+        </div>
+        <div id="start">Post a new expense</div>
+        <div id="transaction">
+            <form>
+                {% csrf_token %}
+                Details of the Expense <input type= "text" name="details"><br>
+                Purchase Venue <input type= "text" name="venue"><br>
+                Purchase Amount <input type= "text" name="amount"><br>
+                Split among: <select id="numUsers">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                             </select>
+                <div class="users">
+                </div>
+                
+                </select>
+            <input type="submit">
+                <input type="text" name="details">
+            </form>
+        </div>
+        <div><a href={% url 'logout' %}> Click here to log out.</a></div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static "expense_manager/js/dashboard.js"%}"></script>
+</html>
