@@ -76,14 +76,29 @@ def get_expenses(request):
     
     myExpenses = list(UserExpense.objects.filter(username=username))
     
+    if 'payable' in request.GET:
+        myDict = {}
+
+        for expense in myExpenses:
+            if expense.expense_poster!=username:
+                if expense.expense_poster not in myDict:
+                    myDict[expense.expense_poster]  = expense.cost
+                else:
+                    myDict[expense.expense_poster] += expense.cost
+        
+        return render(request, 'expense_manager/payable.html', {'expenses' : myDict})
+    
     if 'recent' in request.GET:
         recentExpenses = []
         recentExpenses.append(myExpenses.pop())
         recentExpenses.append(myExpenses.pop())
         
         return render(request, 'expense_manager/recent_expenses.html', {'recentExpenses' : recentExpenses})
-
+    
     total_expense = 0
     for expense in myExpenses:
         total_expense += expense.cost
     return render(request, 'expense_manager/expenses.html',{'expenses': myExpenses, 'total_expense' : total_expense})
+    username = request.user.username
+    
+    

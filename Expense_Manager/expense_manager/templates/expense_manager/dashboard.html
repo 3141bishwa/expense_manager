@@ -9,7 +9,8 @@
         <div> Hello, <span id="username">{{ user.username }}</span>how are you doing today? </div>
         <div> Your email is <span>{{user.email}}</span></div>
         <div id="recent_purchase">Your Most Recent Purchases</div>
-        <iframe src="https://jkan11lg.apps.lair.io/get_expenses?recent=1"></iframe>
+        <iframe src="https://jkan11lg.apps.lair.io/get_expenses?recent"></iframe>
+        <iframe src="https://jkan11lg.apps.lair.io/get_expenses?payable"></iframe>
         <div><a href="{% url 'get_expenses' %}">Click to view your full expenses. </a></div>
         <div id="start">Post a new expense</div>
         <div id="transaction">
