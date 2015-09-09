@@ -5,33 +5,22 @@
         <link rel="stylesheet" type="text/css" href="{% static "expense_manager/css/dashboard.css" %}">
     </head>
     <body>
-        <div>
-            Hello, <span id="username">{{ user.username }}</span>how are you doing today?
-        </div>
-        <div>
-            Your email is <span>{{user.email}}</span>
-        </div>
-        <div>
-            Your recent expenses.
-        </div>
+        {% if message %}<div>{{message}}</div>{% endif %}
+        <div> Hello, <span id="username">{{ user.username }}</span>how are you doing today? </div>
+        <div> Your email is <span>{{user.email}}</span></div>
+        <div id="recent_purchase">Your Most Recent Purchases</div>
+        <iframe src="https://jkan11lg.apps.lair.io/get_expenses?recent=1"></iframe>
+        <div><a href="{% url 'get_expenses' %}">Click to view your full expenses. </a></div>
         <div id="start">Post a new expense</div>
         <div id="transaction">
-            <form>
+            <form method="post" action="{% url 'update_expense' %}">
                 {% csrf_token %}
                 Details of the Expense <input type= "text" name="details"><br>
-                Purchase Venue <input type= "text" name="venue"><br>
                 Purchase Amount <input type= "text" name="amount"><br>
-                Split among: <select id="numUsers">
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                             </select>
-                <div class="users">
-                </div>
-                
-                </select>
-            <input type="submit">
-                <input type="text" name="details">
+                Purchase Venue <input type= "text" name="venue"><br>
+                <div>Share Among:</div>
+                <div id="users"></div>
+                <input type="submit">
             </form>
         </div>
         <div><a href={% url 'logout' %}> Click here to log out.</a></div>

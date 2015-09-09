@@ -1,0 +1,21 @@
+<table>
+    <thead>
+        <td>Description</td>
+        <td>Price</td>
+        <td>Purchase Store</td>
+        <td>Purchase Made By</td>
+    </thead>
+    {% for expense in expenses %}
+    <tr>
+        <td>{{expense.description}}</td>
+        <td>{{expense.cost}}</td>
+        <td>{{expense.purchase_store}}</td>
+        <td>{{expense.expense_poster}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td>Total</td>
+        <td>{{total_expense}}</td>
+    </tr>
+    <div><a href={% url 'home' %}>Go Back.</a></div>
+</table>

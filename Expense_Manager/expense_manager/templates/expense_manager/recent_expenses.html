@@ -1,0 +1,7 @@
+{% for expenses in recentExpenses%}
+<div class="expenses">
+    <div class="cost">${{expenses.cost}}</div>
+    <div class="venue">for {{expenses.purchase_store}}</div>
+    <div class="purchaser">Posted by: {{expenses.expense_poster}}</div>
+</div>
+{% endfor %}
