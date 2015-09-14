@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('expense_manager', '0002_auto_20150906_0131'),
+        ('manage_expenses', '0002_auto_20150906_0131'),
     ]
 
     operations = [
